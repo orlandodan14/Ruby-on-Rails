@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Guess Number Game</title>
+		<style>
+			body {
+				background: <%= color %> ;
+				font-size: 30px;
+				padding-top: 100px;
+				text-align:center;
+			}
+			input {
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		 <p>
+      <%= cheat %>
+    </p>
+    <h4>Try to guess the number</h4>
+		<form>
+			<input type="text" name="guess" />
+			<input type="submit" value="Guess!" />
+		</form>
+		<p><%= message %></p>
+	</body>
+</html>
