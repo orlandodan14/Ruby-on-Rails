@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Hangman Game</title>
+		<style>
+			body {
+				font-size: 30px;
+				padding-top: 40px;
+				text-align:center;
+			}
+			input {
+				height: 30px;
+				text-align:center;
+			}
+		</style>	
+	</head>
+	<body>
+    <h3>HANGMAN</h3>
+    
+ 		<form>
+ 			<input type="submit" name="game" value="New" />
+ 		</form>
+ 		
+    <p>
+    Try to guess the secret word!
+ 		</p>
+ 			  		
+	  <div id="form">
+		  <form>
+		    <input type="text" class="textbox" name="guess" pattern="[A-Za-z]" size="1" maxlength="1" autofocus>
+				<input type="submit" value="Try" />
+		  </form>
+		  <%= imagen %>
+		</div>
+		
+	  <div id="progress">
+	    <p>Your progress: <%= progress %></p>
+	  </div>
+	  
+	  <div id="misses">
+	    <p>Your misses: <%= misses %> </p>
+	  </div>
+	  <div id="message">
+	    <p><%= message %></p>
+	  </div>
+		
+	</body>
+</html>
