@@ -93,5 +93,5 @@ get '/' do
   guesses = session[:game].guesses
   code = session[:game].code
   
-  erb :index, :locals => {:code => code, :message => message, :feedback => feedback, :turns => turns, :path => path, :guesses => guesses}
+  erb :index, :locals => {:message => message, :feedback => feedback, :turns => turns, :path => path, :guesses => guesses}
 end
