@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Mastermind Game</title>
+		<style>
+			body {
+				font-size: 30px;
+				padding-top: 40px;
+				text-align:center;
+			}
+			input {
+				height: 30px;
+				text-align:center;
+			}
+		</style>	
+	</head>
+	<body>
+    <h3>MASTERMIND</h3>
+    
+ 		<form>
+ 			<input type="submit" name="game" value="New" />
+ 		</form>
+ 		
+    <p>
+    Try to guess the secret code, Just a 4 digit number! You have <%= turns %> turns.!!
+ 		</p>
+ 		<div id="message">
+	  	<%= message %>
+	  </div>
+	  <div>
+		  <form>
+			<input type="text" name="code" placeholder="Your code" pattern="["0"-"9"]" maxlength="4" autofocus />
+			<input type="submit" value="Try" />
+		  </form>
+		</div>
+			  
+	  <div id="feedback" style="max-width: 500px; margin-left: 35%">
+	    <% path.each_with_index do |feedback, index| %>
+	    	<div style="text-align: left">Your code:    <%= guesses[index] %> => <%= feedback.join('') %></div>
+	    <% end %>
+	  </div>
+	  
+	</body>
+</html>

@@ -53,10 +53,8 @@ class Game
   def message_game
     if @progress == @word_to_guess
       @message = "You guessed it, the word was #{@word_to_guess.join.upcase}! You win! Another word was generated."
-      #exit
     elsif @misses.length > 5
       @message = "Out of turns! The correct word was #{@word_to_guess.join("").upcase}! You lose! Another word was generated."
-      #exit
     else
       @message = "You have #{6 - @misses.length} missed guesses left."
     end
