@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>Guess Number Game</title>
+		<link rel="stylesheet" type="text/css"  href="/css/dec.css">
+		<style>
+			body {
+				background: <%= color %> ;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="/">Back to Menu</a>
+		 <p>
+      <%= cheat %>
+    </p>
+    <h4>Try to guess the number</h4>
+		<form>
+			<input type="text" name="guess" />
+			<input type="submit" value="Guess!" />
+		</form>
+		<p><%= message %></p>
+	</body>
+</html>
