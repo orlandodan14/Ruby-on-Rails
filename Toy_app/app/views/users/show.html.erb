@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<% @user.microposts.each do |post| %>
+	<p>
+		<%= post.content %>. <%= post.updated_at %>
+		<%= link_to 'Edit', edit_micropost_path(post) %> |
+		<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+	</p>
+<% end %>
