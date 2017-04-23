@@ -15,7 +15,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: "", password_digest: "" } }    
     #Verify that the new sessions form gets re-rendered and that a flash message appears:
     assert_template 'sessions/new'
-    assert_not flash.empty?    
+    assert_not flash.empty?
     #Visit another page (such as the Home page):
     get root_path    
     #Verify that the flash message doesn’t appear on the new page
