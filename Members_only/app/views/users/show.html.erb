@@ -1,0 +1,11 @@
+<% provide(:title, @user.name ) %>
+
+<!-- Profile -->
+<div class="container center" id="home">	
+  <%= gravatar_for @user %>
+  <h1 class="jumbo"><b><%= @user.name %></b></h1>
+  <p><%= @user.email %></p>
+  <button class="button light-grey padding-large margin-top">
+    <i class="fa fa-download"></i> See postes
+  </button>
+</div>
