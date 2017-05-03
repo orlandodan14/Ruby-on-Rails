@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -147,13 +147,13 @@ aside {
 
 .gravatar {
   /*float: left;*/
-  margin-top: 20px;
+  margin-top: 10px;
   margin-right: 10px;
   border-radius: 50%;
 }
 
 .gravatar_edit {
-  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* forms */
@@ -203,6 +203,8 @@ input {
 .users {
   list-style: none;
   margin: 0;
+  padding-left: 20%;
+  padding-right: 20%;
   li {
     overflow: auto;
     padding: 10px 0;

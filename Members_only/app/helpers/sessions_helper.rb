@@ -41,5 +41,16 @@ module SessionsHelper
   def logout
     session.delete(:user_id)
     @curr_user = nil
-  end  
+  end
+  
+  # Rediects to stored location or to the default:
+  def redirect_back_or(default)
+    redirect_to(session[:stored_url] || default)
+    session.delete(:stored_url)
+  end
+  
+  # Stores the URL traying to be accessed:
+  def store_url
+    session[:stored_url] = request.original_url if request.get?
+  end
 end

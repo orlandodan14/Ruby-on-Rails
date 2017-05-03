@@ -7,7 +7,7 @@ class User < ApplicationRecord
                        format: { with: VALID_EMAIL_REGEX },
                        uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { in: 6..20 }
+  validates :password, presence: true, length: { in: 6..20 }, allow_nil: true
   
   # CLASS METHODS:
     # Returns the hash digest of the given string, it means a secure string:
