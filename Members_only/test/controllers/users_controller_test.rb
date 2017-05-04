@@ -76,7 +76,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     first_page_of_users.each do |user|
       assert_select 'a[href=?]', user_path(user), text: user.name
       unless user == @user
-        assert_select 'a[href=?]', user_path(user), text: 'Delete'
+        assert_select 'a[href=?]', user_path(user), text: 'x'
       end
     end
     assert_difference 'User.count', -1 do
