@@ -1,11 +1,31 @@
 <% provide(:title, @user.name ) %>
 
 <!-- Profile -->
-<div class="container center" id="home">	
+<div class="container center">
+	
   <%= gravatar_for @user %>
   <h1 class="jumbo"><b><%= @user.name %></b></h1>
   <p><%= @user.email %></p>
-  <button class="button light-grey padding-large margin-top">
-    <i class="fa fa-download"></i><%= link_to "Edit profile", edit_user_path(curr_user) %>
-  </button>
+  <section class="stats">
+  	<%= render 'shared/stats' %>
+  </section><br />
+  <%if @user == curr_user %>
+	  <button type="button" class="btn btn-default go-center">
+	    <%= link_to "Edit profile", edit_user_path(curr_user) %>
+	  </button><br />
+	<% end %>	
+  
+  <div class="col-md-8 col-md-offset-2">  	
+		<section class="micropost_form">
+			<%= render 'shared/micropost_form' %>
+		</section>
+  	<%= render 'follow_form' if loggedin? %>
+  	<% if @user.microposts.any? %>
+  		<h3>Microposts (<%= @user.microposts.count %>)</h3>
+  		<ol class="microposts text-left">
+  			<%= render @microposts %>
+  		</ol>
+  		<%= will_paginate @microposts %>
+  	<% end %>
+  </div>
 </div>

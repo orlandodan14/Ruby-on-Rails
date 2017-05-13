@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_loggedin,     only: [:index, :edit, :update, :destroy]
+  before_action :check_loggedin,     only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :check_correct_user, only: [:edit, :update]
   before_action :admin_user,         only: :destroy
   
@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @micropost = @user.microposts.build
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to root_url and return unless @user.activated?
   end
   
@@ -47,30 +49,36 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+  
   # PRIVATE METHODS:
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-  
-  # BEFORE ACTIONS:
-  # Confirms a logged-in user:
-  def check_loggedin
-    unless loggedin?
-      store_url
-      flash[:danger] = "Please log in."
-      redirect_to login_url
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-  end
-  
-  # Confirms the correct user.
-  def check_correct_user
-    @user = User.find(params[:id])
-    redirect_to root_url unless @user == curr_user
-  end
-  
-  # Confirms an admin user:
-  def admin_user
-    redirect_to(root_url) unless curr_user.admin?
-  end
+    
+    # BEFORE ACTIONS:
+    
+    # Confirms the correct user.
+    def check_correct_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless @user == curr_user
+    end
+    
+    # Confirms an admin user:
+    def admin_user
+      redirect_to(root_url) unless curr_user.admin?
+    end
 end

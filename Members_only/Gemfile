@@ -37,6 +37,10 @@ gem 'bcrypt', platforms: :ruby
 # Devise
 gem 'devise'
 gem 'devise_security_extension'
+gem 'carrierwave', '~> 1.1'
+gem 'mini_magick', '~> 4.7'
+gem 'fog', '~> 1.40'
+#gem 'rmagick', '~> 2.15', '>= 2.15.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
