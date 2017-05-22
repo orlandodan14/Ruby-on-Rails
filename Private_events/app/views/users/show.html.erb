@@ -1,0 +1,21 @@
+<h2><%= @user.name %></h2>
+<p><%= @user.email %></p>
+
+<% if @user.events.any? %>
+	<h3>Submitted (<%= @user.events.count %>) events</h3>
+	<ul>
+		<% @user.events.each do |event| %>
+			<li>
+				<p><b>Location: </b><%= event.location %></p> 
+				<p><b>Host: </b><%= event.creator.name %></p>
+				<p><%= link_to event.description, event %></p>
+				<p><%= event.date %></p>
+				</br>	
+			</li>
+		<% end %>
+	</ul>	
+<% else %>
+	<h3>No events found</h3>
+<% end %>
+
+<%= render 'shared/events' %>

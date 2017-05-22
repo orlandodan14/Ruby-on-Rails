@@ -1,0 +1,34 @@
+<% if @events.upcoming.any? %>
+	<h3>Total (<%= @events.upcoming.count %>) upcaming events</h3>
+	<ul>
+		<% @events.upcoming.each do |event| %>
+			<li>
+				<p><b>Location: </b><%= event.location %></p> 
+				<p><b>Host: </b><%= event.creator.name %></p>
+				<p><%= link_to event.description, event %></p>
+				<p><%= event.date %></p>
+				</br>	
+			</li>
+		<% end %>
+	</ul>	
+<% else %>
+	<h3>No upcoming events</h3>
+<% end %>
+
+<% if @events.past.any? %>
+	<h3>Total (<%= @events.past.count %>) past events</h3>
+	<ul>
+		<% @events.past.each do |event| %>
+			<li>
+				<p><b>Location: </b><%= event.location %></p> 
+				<p><b>Host: </b><%= event.creator.name %></p>
+				<p><%= link_to event.description, event %></p>
+				<p><%= event.date %></p>
+				</br>	
+			</li>
+		<% end %>
+	</ul>	
+<% else %>
+	<h3>No past events</h3>
+<% end %>
+

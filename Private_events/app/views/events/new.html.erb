@@ -1,0 +1,23 @@
+<%= form_for(@event) do |f| %>
+	<h2>Create event</h2>
+	<% if @event.errors.any? %>
+		<ul>
+			<% @event.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	
+	<%= f.label :location, "Location:" %>
+	<%= f.text_field :location %>
+
+	<%= f.label :description, "Event Description:" %>
+	<%= f.text_area :description %>
+
+	<%= f.label :date, "Date:" %>
+	<%= f.datetime_select :date, ampm: true, default: DateTime.tomorrow + 12.hours %>
+
+	<div class="submit">
+		<%= f.submit "Create Event" %>
+	</div>
+<% end %>
