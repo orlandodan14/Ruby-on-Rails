@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :events,          :foreign_key => :creator_id # eventos
+  
   has_many :attended_events, :through =>     :event_attendees #asistencias
   has_many :event_attendees, :foreign_key => :attendee_id #asistentes a cada evento
   

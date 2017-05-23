@@ -2,6 +2,9 @@
 <p><b>Host: </b><%= @event.creator.name %></p>
 <p><%= @event.description %></p>
 <p><%= @event.date %></p>
+
+<%= link_to "Make invitations", new_invitation_path %>
+
 <% if logged_in? && current_user.attending?(@event) && Time.now < @event.date %> 
 	<%= form_for(current_user.event_attendees.find_by(attended_event_id: @event.id),
 		html: { method: :delete }) do |f| %>
