@@ -1,0 +1,33 @@
+<%= form_for(flights_path, method: :get) do %>
+	<h2>Search Flights</h2>
+	
+	<%= select_tag(:from_code, options_for_select(@airports), prompt: "From") %>
+	<%= select_tag(:to_code, options_for_select(@airports), prompt: "To") %>
+	<%= select_tag(:date, options_for_select(@flight_dates), prompt: "Date") %>
+	<%= select_tag(:num_tickets, options_for_select(@passengers), prompt: "Passengers") %>
+	
+	<%= submit_tag("Find flights") %> 
+<% end %>
+
+<% if !@flights.empty? %>
+  <%= form_tag(new_booking_path, method: :get) do %>
+    <%= hidden_field_tag(:num_tickets, params[:num_tickets]) %>
+    <table>
+      <th></th>
+      <th>Departing</th>
+      <th>Arriving</th>
+      <th>Date</th>
+      <th>Flight Duration</th>
+      <%= collection_radio_buttons(:flight, :flight_id, @flights, :id, :datetime) do |flight| %>
+        <tr>
+          <td><%= flight.radio_button %></td>
+          <td><%= flight.object.from_airport.code %></td>
+          <td><%= flight.object.to_airport.code %></td>
+          <td><%= flight.object.datetime %></td>
+          <td><%= flight.object.duration %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= submit_tag("Let's Go!") %>
+  <% end %>
+<% end %>

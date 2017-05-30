@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: 1
+  to: 1
+  datetime: 2017-05-29 15:28:52
+  duration: 1
+
+two:
+  from: 1
+  to: 1
+  datetime: 2017-05-29 15:28:52
+  duration: 1

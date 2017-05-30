@@ -1,0 +1,36 @@
+<h1>Your booking ticket:</h1>
+<div>
+	<div>
+		<ol>
+			<li>
+				Booking id: <%= @booking.id %>.
+			</li>
+			<li>			
+				Flight id: <%= @booking.flight.id %>.
+			</li>
+			<li>
+				Departure airport: <%= @booking.flight.from_airport.code %>	.	
+			</li>
+			<li>
+				Arrival airport: <%= @booking.flight.to_airport.code %>.
+			</li>
+			<li>
+				Departure date: <%= @booking.flight.datetime %>.
+			</li>
+			<li>
+				Flight duration: <%= @booking.flight.duration %> minutes.
+			</li>
+			
+			<% if @booking.passengers.any? %>
+				<h2>Passengers(<%= @booking.passengers.count %>)</h2>
+				<% @booking.passengers.each_with_index do |passenger, index| %>	
+				<li>		
+					Name: <%= passenger.name %> /
+					Email: <%= passenger.email %>
+				</li>
+				<%end%>
+			<%end%>
+		</ol>
+	</div>
+</div>
+<%= link_to "Search for another flight", root_path %>
