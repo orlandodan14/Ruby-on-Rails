@@ -1,0 +1,25 @@
+<%= form_for(@kitten) do |f| %>
+	<h2>Fill in all the fields</h2>
+	
+	<% if @kitten.errors.any? %>
+		<ul class="errors">
+			<% @kitten.errors.full_messages.each do |error| %>
+				<li><%= error %></li>
+			<% end %>
+		</ul>
+	<% end %>
+	
+	<%= f.label :name, "Kitten's name: " %>
+	<%= f.text_field :name %>
+	
+	<%= f.label :age, "Age: " %>
+	<%= f.select :age, options_for_select(1..10, @kitten.age) %>
+	
+	<%= f.label :cuteness, "Kitten's cuteness: " %>
+	<%= f.text_field :cuteness %>
+	
+	<%= f.label :softness, "Kitten's softness: " %>
+	<%= f.text_field :softness %>
+	
+	<%= f.submit "Save kitten" %>
+<% end %>

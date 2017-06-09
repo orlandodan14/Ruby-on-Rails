@@ -1,0 +1,10 @@
+<h1>All kittens</h1>
+
+<% if !@kittens.empty? %>
+	<% @kittens.each do |kitten| %>
+		<p>
+			<%= link_to kitten.name, kitten_path(kitten) %>
+			(<%= link_to "edit", edit_kitten_path(kitten) %> | <%= link_to "delete", kitten, method: :delete, data: {confirm: "Delete kitten?"} %>)
+		</p>
+	<% end %>		
+<% end %>
